@@ -1,0 +1,23 @@
+<div class="box-new-comment shadow mt-3">
+	<%= form_for @changeset, user_path(@conn, :create), fn f ->  %>
+		<h3 class="title mb-3">New User</h3>
+		<div class="form-group mt-3">
+			<label class="w-100">
+				Username: <%= text_input f, :username, class: "form-control" %>
+			</label>
+		</div>
+		<div class="form-group">
+			<label class="w-100">
+				Email: <%= email_input f, :email, class: "form-control" %>
+			</label>
+		</div>
+		<div class="form-group">
+			<label class="w-100">
+				Password:<%= password_input f, :password, class: "form-control" %>
+			</label>
+		</div>
+		<div class="text-right">		
+			<%= submit "Create User", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

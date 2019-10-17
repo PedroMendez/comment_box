@@ -1,0 +1,69 @@
+<div id="content" class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h4 class="title my-3">Comments</h4> 
+
+<%= for comment <- @comments do %>
+
+    <%= if !comment.parent do %>
+        <div class="comment-box shadow">
+            <div class="media">
+
+                <%= for user <- @users do %>
+                    <%= if user.id == comment.owner do %>
+                        <div class="icon">
+                            <span><%= user.username %></span>
+                        </div>
+                        <div class="media-body pt-2">
+                            <h5 class="mt-0">
+                                <%= user.username%>
+                            </h5>
+                            <span class="date">Added on: <%= comment.updated_at.month %>-<%= comment.updated_at.day %>-<%= comment.updated_at.year %><span>
+                        </div>
+                    <% end %>
+                <% end %>
+
+            </div>
+            <div class="comment-content">
+               
+                <h3><a href="<%= CommentBoxWeb.Router.Helpers.comment_path(CommentBoxWeb.Endpoint, :show, comment.id) %>">Comment: <%= comment.title %></a></h3>
+                <p><%= comment.text %></p>
+                <!-- end of content -->
+
+                <!-- REPLIES -->
+                <%= for reply <- @comments do %>
+                    <%= if reply.parent == comment.id do %>
+                        <div class="box-reply">
+                            <p><%= reply.text %></p>
+                        </div>
+                    <% end %>
+                <% end %>
+            
+                <hr>
+                <div class="reply-form">
+                    <form action="">
+                        <a href="<%= CommentBoxWeb.Router.Helpers.comment_path(CommentBoxWeb.Endpoint, :edit, comment.id) %>">Leave a Reply</a>
+                        <button type="submit">
+                            <img src="<%= static_path(@conn, "/images/Group 34.svg") %>" alt="">
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+
+    <% end %>
+
+<% end %>
+<div class="text-right box-btn">
+  <button type="button" class="btn btn-primary btn-sm">
+    <a href="<%= CommentBoxWeb.Router.Helpers.comment_path(CommentBoxWeb.Endpoint, :new) %>">Create New Comment!</a>
+  </button>
+</div>

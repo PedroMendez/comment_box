@@ -1,0 +1,38 @@
+<div class="box-new-comment shadow mt-3">
+	<h3 class="title mb-3">User by Id</h3>
+	<div class="form-group">
+		<label>
+			Name: <%= @user.username %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Email: <%= @user.email %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			ID: <%= @user.id %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Is Active: <%= @user.is_active %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Inserted At: <%= @user.inserted_at %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Updated At: <%= @user.updated_at %>
+		</label>
+	</div>
+	<div class="text-right">		
+	    <button type="button" class="btn btn-primary btn-sm">
+	      <a href="<%= CommentBoxWeb.Router.Helpers.comment_path(CommentBoxWeb.Endpoint, :new) %>">Create a new User!</a>
+	    </button>  
+    </div> 
+</div>

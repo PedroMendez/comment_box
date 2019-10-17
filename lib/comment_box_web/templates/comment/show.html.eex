@@ -1,0 +1,33 @@
+<div class="box-new-comment shadow mt-3">
+	<h3 class="title">Comment by Id</h3>
+	<div class="form-group mt-3">
+		<label>
+			Title: <%= @comment.title %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Text: <%= @comment.text %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Owner ID: <%= @comment.owner %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Inserted At: <%= @comment.inserted_at %>
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Updated At: <%= @comment.updated_at %>
+		</label>
+	</div>	
+	<div class="text-right">	
+	    <button type="button" class="btn btn-primary btn-sm">
+	      <a href="<%= CommentBoxWeb.Router.Helpers.comment_path(CommentBoxWeb.Endpoint, :new) %>">Create a new Comment!</a>
+	    </button>
+    </div>
+</div>
